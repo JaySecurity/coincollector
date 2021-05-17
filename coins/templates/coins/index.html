@@ -1,24 +1,25 @@
-{% extends 'base.html' %}
-{% block content %}
-
+{% extends 'base.html' %} {% block content %}
 
 <h1>Coin List List</h1>
 
 {% for coin in coins %}
-  <div class="card">
-    <div class="card-content">
+<div class="card">
+  <div class="card-content">
+    <a href="{% url 'detail' coin.id %}">
       {% if coin.get_appreciation_percentage > 20.0 %}
-      <span class="card-title green-text darken-1 ">{{coin.year}} - {{ coin.title }} </span>
+      <span class="card-title green-text darken-1"
+        >{{coin.year}} - {{ coin.title }}
+      </span>
       {% elif coin.appraised_value < coin.face_value %}
-      <span class="card-title red-text darken-1 ">{{coin.year}} - {{ coin.title }} </span>
+      <span class="card-title red-text darken-1"
+        >{{coin.year}} - {{ coin.title }}
+      </span>
       {%else%}
-      <span class="card-title ">{{ coin.title }}</span>
+      <span class="card-title">{{coin.year}} - {{ coin.title }}</span>
       {% endif %}
-      <p>Notes: {{ coin.notes }}</p>
-      <p>Face Value: ${{ coin.face_value|floatformat:2}}</p>
-      <p>Appraised Value: ${{ coin.appraised_value|floatformat:2}}</p>
-    </div>
+    </a>
   </div>
+</div>
 {% endfor %}
-
+<!-- prettier-ignore -->
 {% endblock %}

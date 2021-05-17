@@ -1,0 +1,6 @@
+Coin(title = 'Canadian Silver Dollar', year = 1956, notes ='Purchased 1980 for 1 dollar', face_value = 1.00, appraised_value = 2.10),
+  Coin(title = 'American Silver Eagle', year = 1986, notes ='Purchased 1986 for 1 dollar, Uncirculated', face_value = 1.00, appraised_value = 45.00),
+  Coin(title = 'American Wheat Penny', year = 1933, notes ='Found in old car.', face_value = .01, appraised_value = 3.79),
+  Coin(title = 'Mercury Dime', year = 1943, notes ='Found in loose change', face_value = .10 , appraised_value = 2.50),
+  Coin(title = 'Canadian Penny', year = 1981, notes ='Found in loose change', face_value = .01 , appraised_value = .01),
+  Coin(title = 'American V Nickle', year = 1912, notes ='cut in half', face_value = .05 , appraised_value = .02),
