@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{% block title %} {%endblock%}</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
@@ -18,17 +21,22 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="{% static 'css/style.css' %}"
+      href="{% static '/css/style.css' %}"
     />
   </head>
   <body>
     <header class="navbar-fixed">
       <nav>
         <div class="nav-wrapper blue-grey">
-          <a href="{%url 'home' %}" class="left brand-logo hide-on-med-and-down">&nbsp;&nbsp;Coin-Collector</a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="large material-icons">menu</i></a>
+          <a href="{%url 'home' %}" class="left brand-logo hide-on-med-and-down"
+            >&nbsp;&nbsp;Coin-Collector</a
+          >
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+            ><i class="large material-icons">menu</i></a
+          >
           <ul class="right hide-on-med-and-down">
             <li><a href="/about">About</a></li>
+            <li><a href="{% url 'coin_create' %}">Add a Coin</a></li>
             <li><a href="/coins">View All My Coins</a></li>
           </ul>
         </div>
@@ -37,23 +45,20 @@
     <ul class="sidenav" id="mobile-demo">
       <li><a href="{% url 'home' %}">Home</a></li>
       <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'coin_create' %}">Add a Coin</a></li>
       <li><a href="{% url 'index' %}">View All My Coins</a></li>
     </ul>
-    <main class="container">
-    {% block content %} 
-      
-    {% endblock %}
-    </main>
+    <main class="container">{% block content %} {% endblock %}</main>
     <footer class="page-footer blue-grey">
       <div class="right">
         All Rights Reserved, &copy; 2021 Coin Collector &nbsp;
       </div>
     </footer>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, {disabled: false});
-  });
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems, { disabled: false });
+      });
     </script>
   </body>
 </html>

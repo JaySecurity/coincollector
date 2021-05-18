@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<!-- prettier-ignore -->
+
+{% block content%}
+<!-- prettier-ignore -->
+<h1>Delete Coin</h1>
+<h4>
+  Are you sure you want to delete the {{coin.year}} - {{coin.title}} from your
+  collection?
+</h4>
+<form action="" method="post" class="input-form">
+  {% csrf_token %}
+  <!-- prettier-ignore -->
+  <input type="submit" value="Remove From Collection" class="btn red darken-3" />
+  <a href="{% url 'detail' coin.id%}" class="btn-small blue-grey lighten-2">
+    Cancel
+  </a>
+</form>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+<!-- prettier-ignore -->
+
+{% block content%}
+<!-- prettier-ignore -->
+{% if coin %}
+<h1>Edit Coin</h1>
+{% else %}
+<h1>Add Coin</h1>
+{% endif %}
+
+<form action="" method="post" class="input-form">
+  {% csrf_token %}
+  <!-- prettier-ignore -->
+  {{ form.as_ul }}
+  <input type="submit" value="Submit" class="btn-small blue-grey lighten-2" />
+  {% if coin %}
+  <a href="{%url 'index' %}" class="btn-small blue-grey lighten-2">Cancel</a>
+  {% endif %}
+</form>
+
+{% endblock %}

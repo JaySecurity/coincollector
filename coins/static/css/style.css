@@ -12,3 +12,9 @@ footer.page-footer {
   padding-top: 0;
   text-align: right;
 }
+
+.input-form {
+  max-width: 600px;
+  margin: 100px auto;
+  list-style: none;
+}

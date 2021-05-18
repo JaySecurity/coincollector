@@ -21,6 +21,20 @@
     <p>Face Value: ${{ coin.face_value|floatformat:2}}</p>
     <p>Appraised Value: ${{ coin.appraised_value|floatformat:2}}</p>
   </div>
+  <div class="card-action">
+    <a
+      href="{% url 'coin_update' coin.id %}"
+      class="btn-small blue-grey lighten-2"
+    >
+      Edit
+    </a>
+    <a
+      href="{% url 'coin_delete' coin.id %}"
+      class="btn-small blue-grey lighten-2"
+    >
+      Delete
+    </a>
+  </div>
 </div>
 
 <!-- prettier-ignore -->
