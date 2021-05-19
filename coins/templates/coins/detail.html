@@ -22,20 +22,38 @@
     <p>Appraised Value: ${{ coin.appraised_value|floatformat:2}}</p>
   </div>
   <div class="card-action">
-    <a
-      href="{% url 'coin_update' coin.id %}"
-      class="btn-small blue-grey lighten-2"
-    >
-      Edit
-    </a>
-    <a
-      href="{% url 'coin_delete' coin.id %}"
-      class="btn-small blue-grey lighten-2"
-    >
-      Delete
-    </a>
-  </div>
+    <form class="app-form " action="{%url 'add_appraisal' coin.id %}" method="POST">
+      {% csrf_token %} {{ appraisal_form.as_p }}
+      <input class="btn-small blue-grey lighten-2" type="submit" value="Add Appraisal" />
+    </form>
+      <a
+        href="{% url 'coin_update' coin.id %}"
+        class="btn-small blue-grey lighten-2"
+      >
+        Edit
+      </a>
+      <a
+        href="{% url 'coin_delete' coin.id %}"
+        class="btn-small blue-grey lighten-2"
+      >
+        Delete
+      </a>
+         
+  </div> 
 </div>
 
-<!-- prettier-ignore -->
-{% endblock %}
+<script>
+  let dateEl = document.getElementById('id_date');
+  M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
+</script>
+
+  <!-- prettier-ignore -->
+  {% endblock %}
+
+
+</div>

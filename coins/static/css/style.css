@@ -18,3 +18,13 @@ footer.page-footer {
   margin: 100px auto;
   list-style: none;
 }
+
+.app-form {
+  margin-bottom: 10px;
+}
+
+.app-form,
+.app-form p,
+.app-form input {
+  display: inline-block;
+}

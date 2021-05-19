@@ -15,7 +15,11 @@
   {{ form.as_ul }}
   <input type="submit" value="Submit" class="btn-small blue-grey lighten-2" />
   {% if coin %}
-  <a href="{%url 'index' %}" class="btn-small blue-grey lighten-2">Cancel</a>
+  <a href="{%url 'detail' coin.id %}" class="btn-small blue-grey lighten-2">
+    Cancel
+  </a>
+  {% else %}
+  <a href="{%url 'index' %}" class="btn-small blue-grey lighten-2"> Cancel </a>
   {% endif %}
 </form>
 

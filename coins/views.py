@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DeleteView, UpdateView
 
+from .forms import AppraisalForm
 from .models import Coin
 
 
@@ -17,7 +18,17 @@ def coins_index(request):
 
 def coins_detail(request, coin_id):
   coin = Coin.objects.get(id =  coin_id)
-  return render(request, 'coins/detail.html', {'coin': coin})
+  app_form = AppraisalForm()
+  return render(request, 'coins/detail.html', {'coin': coin, 'appraisal_form': app_form})
+
+
+def add_appraisal(request, coin_id):
+  form = AppraisalForm(request.POST)
+  if form.is_valid():
+    new_appraisal = form.save(commit=False)
+    new_appraisal.coin_id = coin_id
+    new_appraisal.save()
+  return redirect('detail', coin_id=coin_id)
 
 
 class CoinCreate(CreateView):
