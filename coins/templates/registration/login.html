@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+<!-- prettier-ignore -->
+{% block content %}
+
+<h1>Log In</h1>
+<form action="{% url 'login' %}" method="POST">
+  {% csrf_token %}
+  <!-- prettier-ignore -->
+  {{form.as_p}}
+  <input type="submit" value="Log In" class="btn-small blue-grey lighten-2" />
+  <input type="hidden" name="next" value="{{next}}" />
+</form>
+{% endblock content %}

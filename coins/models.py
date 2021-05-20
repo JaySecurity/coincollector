@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.urls import reverse
@@ -9,7 +10,9 @@ class Coin(models.Model):
   year = models.IntegerField()
   face_value = models.FloatField('Face Value')
   notes = models.TextField(max_length=300)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+  
   @property
   def appraised_value(self):
     return self.appraisal_set.last().value

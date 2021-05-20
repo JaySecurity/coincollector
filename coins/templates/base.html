@@ -33,8 +33,14 @@
           >
           <ul class="right hide-on-med-and-down">
             <li><a href="/about">About</a></li>
+            {% if user.is_authenticated %}
             <li><a href="{% url 'coin_create' %}">Add a Coin</a></li>
-            <li><a href="/coins">View All My Coins</a></li>
+            <li><a href="{% url 'index' %}">View All My Coins</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            {% endif %}
           </ul>
         </div>
       </nav>
@@ -42,8 +48,14 @@
     <ul class="sidenav" id="mobile-demo">
       <li><a href="{% url 'home' %}">Home</a></li>
       <li><a href="{% url 'about' %}">About</a></li>
+      {% if user.is_authenticated %}
       <li><a href="{% url 'coin_create' %}">Add a Coin</a></li>
       <li><a href="{% url 'index' %}">View All My Coins</a></li>
+      <li><a href="{% url 'logout' %}">Log Out</a></li>
+      {% else %}
+      <li><a href="{% url 'signup' %}">Sign Up</a></li>
+      <li><a href="{% url 'login' %}">Log In</a></li>
+      {% endif %}
     </ul>
     <main class="container">{% block content %} {% endblock %}</main>
     <footer class="page-footer blue-grey">
