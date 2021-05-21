@@ -28,3 +28,7 @@ footer.page-footer {
 .app-form input {
   display: inline-block;
 }
+
+.coin-photo {
+  max-width: 500px !important;
+}

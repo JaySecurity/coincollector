@@ -1,3 +1,6 @@
+import uuid
+
+import boto3
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -7,8 +10,10 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DeleteView, UpdateView
 
 from .forms import AppraisalForm
-from .models import Coin
+from .models import Coin, Photo
 
+S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
+BUCKET = 'coincollector2021'
 
 def home(request):
   return render(request, 'index.html')
@@ -35,6 +40,22 @@ def add_appraisal(request, coin_id):
     new_appraisal.coin_id = coin_id
     new_appraisal.save()
   return redirect('detail', coin_id=coin_id)
+
+@login_required
+def add_photo(request, coin_id):
+  photo_file = request.FILES.get('photo-file',None)
+  if photo_file:
+    s3 = boto3.client('s3')
+    key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+    try:
+      s3.upload_fileobj(photo_file,BUCKET,key)
+      url = f"{S3_BASE_URL}{BUCKET}/{key}"
+      photo = Photo(url=url, coin_id=coin_id)
+      photo.save()
+    except:
+      print('An error occurred uploading file to S3')
+  return redirect('detail', coin_id=coin_id)
+
 
 
 class CoinCreate(LoginRequiredMixin, CreateView):

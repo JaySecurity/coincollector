@@ -33,3 +33,10 @@ class Appraisal(models.Model):
 
   def __str__(self):
     return f"Appraised for {self.value} on {self.date}"
+
+class Photo(models.Model):
+  url = models.CharField(max_length=200)
+  coin = models.ForeignKey(Coin, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"Photo for Coin: {self.coin_id} @ {self.url}"
